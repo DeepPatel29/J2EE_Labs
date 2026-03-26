@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Student</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            max-width: 400px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, select {
+            width: 100%;
+            padding: 5px;
+            margin-top: 3px;
+        }
+        button {
+            margin-top: 15px;
+            padding: 8px 20px;
+        }
+        a {
+            display: inline-block;
+            margin-top: 10px;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Add New Student</h1>
+
+<form th:action="@{/students/save}" th:object="${student}" method="post">
+
+    <label>ID:</label>
+    <input type="number" th:field="*{id}" required/>
+
+    <label>Name:</label>
+    <input type="text" th:field="*{name}" required/>
+
+    <label>Age:</label>
+    <input type="number" th:field="*{age}" required/>
+
+    <label>Gender:</label>
+    <select th:field="*{gender}" required>
+        <option value="">Select</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+    </select>
+
+    <label>Email:</label>
+    <input type="email" th:field="*{email}" required/>
+
+    <label>City:</label>
+    <input type="text" th:field="*{city}" required/>
+
+    <label>Date of Birth:</label>
+    <input type="date" th:field="*{dateOfBirth}" required/>
+
+    <br/>
+    <button type="submit">Save</button>
+</form>
+
+<a href="/students">Back to Student List</a>
+
+</body>
+</html>
