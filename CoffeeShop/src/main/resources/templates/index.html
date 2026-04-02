@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 style="text-align: center">Enter Login Details</h1>
+<p th:text="${message}"></p>
+<div align="center">
+    <h3>Enter Login Detail</h3>
+    <form action="#" method="post" th:action="@{/login}">
+        <table>
+            <tr>
+                <td>Username:</td>
+                <td><input name="userName" type="text" required></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input name="password" type="password" required></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input name="login" value="Login" type="submit"></td>
+            </tr>
+        </table>
+    </form>
+
+    <div th:if="${error}" style="color: red; margin-top: 10px;">
+        <p th:text="${error}"></p>
+    </div>
+
+    <br>
+    <th:block th:if="${response=='added'}">
+        <p style="color: green; font-weight: bold;">Please login now !!</p>
+    </th:block>
+
+    <h3>Click here for new account: <a th:href="@{/add}">Add User</a></h3>
+</div>
+</body>
+</html>
