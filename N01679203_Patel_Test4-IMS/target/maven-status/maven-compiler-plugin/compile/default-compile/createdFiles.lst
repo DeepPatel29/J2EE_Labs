@@ -1,0 +1,8 @@
+com\humber\productims\controller\ProductRestController.class
+com\humber\productims\entity\Product.class
+com\humber\productims\repository\ProductRepository.class
+com\humber\productims\service\ProductServiceImpl.class
+com\humber\productims\service\ProductService.class
+com\humber\productims\N01679203PatelTest4ImsApplication.class
+com\humber\productims\controller\ProductController.class
+com\humber\productims\entity\Product$ProductBuilder.class
