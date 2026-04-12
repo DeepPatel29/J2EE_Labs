@@ -1,0 +1,9 @@
+tacos\data\UserRepository.class
+tacos\security\UserRepositoryUserDetailsService.class
+tacos\User.class
+tacos\security\RegistrationForm.class
+tacos\security\RegistrationController.class
+tacos\security\SecurityConfig.class
+tacos\web\WebConfig.class
+tacos\Lab10Application.class
+tacos\web\OrderController.class

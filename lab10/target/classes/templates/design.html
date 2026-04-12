@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Design Your Taco</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f5f5f5; }
+        .header { background-color: #333; color: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
+        .header h1 { margin: 0; font-size: 24px; }
+        .user-info { display: flex; align-items: center; gap: 15px; }
+        .user-info span { color: #ccc; }
+        .logout-btn { background-color: #e74c3c; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 14px; }
+        .logout-btn:hover { background-color: #c0392b; }
+        .content { max-width: 800px; margin: 40px auto; padding: 30px; background-color: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .success-msg { background-color: #d4edda; border: 1px solid #c3e6cb; color: #155724; padding: 15px; border-radius: 4px; margin-bottom: 20px; text-align: center; }
+        .btn { display: inline-block; padding: 10px 20px; margin: 10px 5px; background-color: #3498db; color: white; text-decoration: none; border-radius: 4px; font-size: 16px; }
+        .btn:hover { background-color: #2980b9; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Taco Cloud</h1>
+        <div class="user-info">
+            <span>Welcome, <strong sec:authentication="name"></strong>!</span>
+            <form method="POST" th:action="@{/logout}">
+                <input type="submit" value="Logout" class="logout-btn"/>
+            </form>
+        </div>
+    </div>
+
+    <div class="content">
+        <h2>Design Your Taco</h2>
+        
+        <div class="success-msg">
+            <strong>Success!</strong> You are logged in. This is a protected page.
+        </div>
+
+        <p>This page demonstrates that Spring Security is working correctly.</p>
+        <p>Only authenticated users with ROLE_USER can access this page.</p>
+
+        <hr style="margin-top: 30px;"/>
+        <h3>Security Features Verified:</h3>
+        <ul>
+            <li>Authentication required to access /design</li>
+            <li>User is logged in as: <strong sec:authentication="name"></strong></li>
+            <li>Authorities: <strong sec:authentication="authorities"></strong></li>
+        </ul>
+
+        <div style="margin-top: 20px;">
+            <a th:href="@{/}" class="btn">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

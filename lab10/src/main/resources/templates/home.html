@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Lab 10 - Taco Cloud</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f5f5f5; }
+        .header { background-color: #333; color: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
+        .header h1 { margin: 0; font-size: 24px; }
+        .user-info { display: flex; align-items: center; gap: 15px; }
+        .user-info span { color: #ccc; }
+        .logout-btn { background-color: #e74c3c; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 14px; }
+        .logout-btn:hover { background-color: #c0392b; }
+        .content { max-width: 800px; margin: 40px auto; padding: 30px; background-color: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .btn { display: inline-block; padding: 10px 20px; margin: 10px 5px; background-color: #3498db; color: white; text-decoration: none; border-radius: 4px; font-size: 16px; }
+        .btn:hover { background-color: #2980b9; }
+        .login-prompt { background-color: #fff3cd; border: 1px solid #ffc107; padding: 15px; border-radius: 4px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Taco Cloud - Lab 10</h1>
+        <div class="user-info" sec:authorize="isAuthenticated()">
+            <span>Welcome, <strong sec:authentication="name"></strong>!</span>
+            <form method="POST" th:action="@{/logout}">
+                <input type="submit" value="Logout" class="logout-btn"/>
+            </form>
+        </div>
+        <div sec:authorize="!isAuthenticated()">
+            <a th:href="@{/login}" style="color: #ccc; margin-right: 15px;">Login</a>
+            <a th:href="@{/register}" style="color: #ccc;">Register</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <h2>Welcome to Taco Cloud!</h2>
+        <p>The best place to design your own custom tacos.</p>
+
+        <div class="login-prompt" sec:authorize="!isAuthenticated()">
+            <strong>Note:</strong> You need to <a th:href="@{/login}">login</a> or <a th:href="@{/register}">register</a> to design tacos and place orders.
+        </div>
+
+        <div>
+            <a th:href="@{/design}" class="btn">Design a Taco</a>
+            <a th:href="@{/orders/current}" class="btn">View Orders</a>
+        </div>
+    </div>
+</body>
+</html>
